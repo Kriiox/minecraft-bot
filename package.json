@@ -6,5 +6,23 @@
     "mineflayer-pathfinder": "^1.9.1",
     "mineflayer-pvp": "^1.0.2",
     "prismarine-viewer": "^1.21.0"
-  }
+  },
+  "name": "minecraft-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kriiox/minecraft-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kriiox/minecraft-bot/issues"
+  },
+  "homepage": "https://github.com/Kriiox/minecraft-bot#readme",
+  "description": ""
 }
