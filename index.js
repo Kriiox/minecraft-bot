@@ -23,7 +23,7 @@ bot.loadPlugin(pathfinder)
 
 bot.on('inject_allowed', () => {
     mcData = require('minecraft-data')(bot.version)
-    console.log("Connecté")
+    console.log("Connecté update")
 })
 
 bot.on('physicTick', lookAtNearestPlayer)
