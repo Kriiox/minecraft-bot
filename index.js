@@ -3,7 +3,7 @@ const pvp = require('mineflayer-pvp').plugin
 const { pathfinder, goals, Movements } = require('mineflayer-pathfinder')
 const armorManager = require('mineflayer-armor-manager')
 const GoalFollow = goals.GoalFollow
-var config = require('./config.json')
+var config = require('./dev.json')
 
 const bot = mineflayer.createBot({
     host: config.server,
@@ -23,7 +23,6 @@ bot.loadPlugin(pathfinder)
 
 bot.on('inject_allowed', () => {
     mcData = require('minecraft-data')(bot.version)
-    console.log("Connecté update")
 })
 
 bot.on('physicTick', lookAtNearestPlayer)
@@ -38,8 +37,12 @@ bot.on('playerCollect', (collector, itemDrop) => {
 })
 
 bot.on('playerJoined', (player) => {
-    if (player.username === bot.username) return
-    bot.chat(getJoinMessage(player.username))
+    if (player.username === bot.username) {
+        console.log(`${bot.username} est connecté au serveur !`)
+        return
+    } else {
+        bot.chat(getJoinMessage(player.username))
+    }
 })
 
 bot.on('playerLeft', (player) => {
@@ -66,6 +69,10 @@ bot.on('chat', function (username, message) {
 
     if (message.includes('suce')) {
         bot.chat("Il a dit suce lol")
+    }
+
+    if (message.includes('pole') || message.includes('poles') || message.includes('paul')) {
+        bot.chat("ahahah il a dit paul")
     }
 
     var msgSplit = message.split(" ")
