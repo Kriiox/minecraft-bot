@@ -3,7 +3,7 @@ const pvp = require('mineflayer-pvp').plugin
 const { pathfinder, goals, Movements } = require('mineflayer-pathfinder')
 const armorManager = require('mineflayer-armor-manager')
 const GoalFollow = goals.GoalFollow
-var config = require('./config.json')[0]
+var config = require('./config.json')[1]
 
 const bot = mineflayer.createBot({
     host: config.server,
