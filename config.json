@@ -1,7 +1,16 @@
-{
-  "server": "51.38.215.177",
-  "port": 25569,
-  "username": "",
-  "password": "",
-  "owner": ""
-}
+[
+  {
+    "server": "178.32.97.234",
+    "port": 25599,
+    "username": "PatrickS127525",
+    "password": "Beignet1212!",
+    "auth": "microsoft"
+  },
+  {
+    "server": "localhost",
+    "port": 25599,
+    "username": "PatrickS127525",
+    "password": "Beignet1212!",
+    "auth": "microsoft"
+  }
+]

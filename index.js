@@ -3,13 +3,14 @@ const pvp = require('mineflayer-pvp').plugin
 const { pathfinder, goals, Movements } = require('mineflayer-pathfinder')
 const armorManager = require('mineflayer-armor-manager')
 const GoalFollow = goals.GoalFollow
-var config = require('./dev.json')
+var config = require('./config.json')[0]
 
 const bot = mineflayer.createBot({
     host: config.server,
     port: config.port,
     username: config.username,
-    password: config.password
+    version: "1.20.1",
+    auth: "microsoft"
 })
 
 // Variable
@@ -71,7 +72,7 @@ bot.on('chat', function (username, message) {
         bot.chat("Il a dit suce lol")
     }
 
-    if (message.includes('pole') || message.includes('poles') || message.includes('paul')) {
+    if (message.includes('pol') || message.includes('paul')) {
         bot.chat("ahahah il a dit paul")
     }
 
@@ -93,6 +94,7 @@ bot.on('chat', function (username, message) {
             break
         case 'wakeup':
             wakeUp()
+            break
 
         default:
             break;
@@ -104,10 +106,10 @@ bot.on('chat', function (username, message) {
     }
 })
 
-bot.on('entitySleep', (entity) => {
-    if (entity.username === bot.username) return
-    goToSleep()
-})
+// bot.on('entitySleep', (entity) => {
+//     if (entity.username === bot.username) return
+//     goToSleep()
+// })
 
 function getJoinMessage(username) {
     const randomNum = Math.floor(Math.random() * 8)
@@ -143,20 +145,30 @@ function getJoinMessage(username) {
 }
 
 function goToSleep() {
+    const worldTime = bot.time.timeOfDay;
+    console.log(worldTime)
+    const isNight = worldTime >= 13000 && worldTime <= 23000;
+
+    if (!isNight) {
+        bot.chat("Ce n'est pas l'heure de dormir.");
+        return;
+    }
+
     const bed = bot.findBlock({
-        matching: mcData.blocksByName.white_bed.id
+        matching: mcData.blocksByName.brown_bed.id
     })
 
     if (bed) {
         bot.sleep(bed, (err) => {
             if (err) {
-                bot.chat(`I can't sleep: ${err.message}`)
+                bot.chat(`Je ne peut pas dormir: ${err.message}`)
             } else {
                 bot.chat("ZzZZz")
             }
         })
     } else {
-        bot.chat('No nearby bed')
+        bot.chat("il n'y a pas de lit.")
+        return
     }
 }
 
